@@ -223,6 +223,7 @@ app.delete(
         return res.status(400).json({ error: "Invalid project id" });
       }
 
+      // Solo puedo eliminar un proyecto que está en fase diseño
       const project = await prisma.project.findUnique({ where: { id: id } });
       if (!project) {
         return res.status(404).json({ error: "Project not found" });
